@@ -1,0 +1,35 @@
+#contentWrapper {
+	float: left;
+	/*min-width: 700px;
+	width: 65%;*/
+	width: 870px;
+	background-color: #FFFFFF;
+	margin-top: 10px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-bottom: 10px;
+}
+
+#mainContent a img {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+.header1, .header2, .header3 {
+	font-family: Metrophobic, Tahoma, Geneva, sans-serif;
+	font-weight: bold;
+}
+
+.header1 {
+	font-size: 42px;
+}
+
+.header2 {
+	font-size: 36px;
+}
+
+.header3 {
+	font-size: 21px;
+}

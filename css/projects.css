@@ -1,0 +1,30 @@
+.projects-showcase {
+	width: 870px;
+	height: 300px;
+	position: relative;
+}
+
+.projects-showcase-image {
+	position: relative;
+}
+
+.projects-showcase  .development-tag {
+	display: block;
+	width: 200px;
+	padding: 5px;
+	float: right;
+	text-align: center;
+	background-color: #F60;
+	background-repeat: repeat;
+	color: #FFFFFF;
+	font-style: italic;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.projects-other {
+	border-bottom: 1px dotted #000;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
