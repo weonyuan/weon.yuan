@@ -26,13 +26,26 @@
 				left: 0;
 			}
 		</style>
+		
+		<script>
+			$(document).ready(function() {
+				$(".projects-other").mouseout(function() {
+					$(this).stop(true).animate({opacity: 0.7}, 100);
+				});
+				
+				$(".projects-other").mouseover(function() {
+					$(this).stop(true).animate({opacity: 1}, 100);
+				});
+			});
+		</script>
+		
         <!-- InstanceEndEditable -->
     </head>
 
     <body>
     	<div id="mainWrapper">
     	<div id="banner">
-    		<a href="index.htm"><img src="images/banner.png" width="260" height="80" alt="Banner" /></a>
+    		<a href="index.htm"><img src="images/invisible.png" width="260" height="80" style="border-style: none;" alt="Banner" /></a>
         </div>
         
         <div id="menuBar"> 
@@ -59,43 +72,43 @@
 			<!-- InstanceBeginEditable name="main-content" -->
             
             <div class="projects-showcase">
-                <div class="projects-showcase-image">
-                	<a href="projects/website.htm">
-            			<img src="projects/website/images/main.jpg" width="870" height="300" alt="In Development" />
-                    </a>
-                </div>
+				<a href="projects/website.htm">
+					<img src="projects/website/images/main.jpg" width="890" height="300" alt="In Development" />
+				</a>
                 <div class="header1">Projects</div>
-                <div class="development-tag header3">
-                	IN DEVELOPMENT
-                </div>
+                <div class="development-tag header3">IN DEVELOPMENT</div>
             </div>
             
-            <div class="header2">Other Projects</div>
+            <div class="header2">More Projects</div>
             
-            <div class="projects-other">
-            	<table>
-                	<tr>
-                    	<td rowspan="2"><img src="projects/meetthisperson/thumbnails/01.jpg" width="120" height="120" alt="Meet This Person!" /></td>
-                        <td>Meet This Person!</td>
-                        <td>5/2011 - Present</td>
-                    </tr>
-                    <tr>
-                    	<td colspan="2">summary</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="projects-other">
-            	<table>
-                	<tr>
-                    	<td rowspan="2"><img src="projects/robotics/thumbnails/01.jpg" width="120" height="120" alt="McKinley Robotics Website" /></td>
-                        <td>McKinley Robotics Website</td>
-                        <td>5/2010 - 5/2012</td>
-                    </tr>
-                    <tr>
-                    	<td colspan="2">summary</td>
-                    </tr>
-                </table>
-            </div>
+            <table>
+				<tr>
+					<td>
+						<a href="projects/meetthisperson.htm"><div class="projects-other">
+							<img src="projects/meetthisperson/thumbnails/01.jpg" />
+							<div class="projects-other-header">Meet This Person!</div>
+							<div class="projects-other-tags">Graphics, Photoshop</div>
+							<div class="projects-other-date">2011 - present</div>
+						</div></a>
+					</td>
+					<td>
+						<div class="projects-other">
+							<img src="projects/robotics/thumbnails/01.jpg" />
+							<div class="projects-other-header">McKinley Robotics Website</div>
+							<div class="projects-other-tags">Web</div>
+							<div class="projects-other-date">2010 - 2012</div>
+						</div>
+					</td>
+					<td>
+						<div class="projects-other">
+							<img src="projects/robotics/thumbnails/01.jpg" />
+							<div class="projects-other-header">McKinley Robotics Website</div>
+							<div class="projects-other-tags">Web</div>
+							<div class="projects-other-date">2010 - 2012</div>
+						</div>
+					</td>
+				</tr>
+			</table>
             <!-- InstanceEndEditable -->
        </div>
        </div>
@@ -104,7 +117,7 @@
          <table>
          	<tr>
             	<td width="120" rowspan="2"><img src="images/logo.png" width="113" height="70" alt="Logo" /></td>
-                <td width="750">
+                <td width="750" style="padding-top: 5px; padding-bottom: 18px;">
                 	<a href="index.htm">Home</a> |
                     <a href="projects.htm">Projects</a> |
                     <a href="about.htm">About Me</a> |
@@ -114,7 +127,7 @@
             </tr>
             <tr>
             	<td>
-                	<p style="border-top: 1px solid #FFFFFF;">&copy; 2013 Weon Yuan. All Rights Reserved.</p>
+                	<div style="border-top: 1px solid #FFFFFF; padding-top: 18px;">&copy; 2013 Weon Yuan. All Rights Reserved.</div>
                 </td>
             </tr>
          </table>

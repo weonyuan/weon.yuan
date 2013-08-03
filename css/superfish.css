@@ -34,7 +34,7 @@
 	margin-bottom:	1em;
 }
 .sf-menu a {
-	padding: 		.75em 2.18em;
+	padding: 		.75em 2.25em;
 	text-decoration:none;
 }
 .sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
