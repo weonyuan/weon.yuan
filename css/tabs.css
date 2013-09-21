@@ -1,0 +1,29 @@
+.tabs {
+	margin-bottom: 1em;
+}
+
+.tabs li {
+	list-style:none;
+	display:inline;
+}
+
+.tabs a {
+	padding:7px 23px;
+	display:inline-block;
+	background:#b31b1b;
+	color:#fff;
+	font-size: 1.3em;
+	text-decoration:none;
+	opacity: 0.7;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.tabs a:hover {
+	opacity: 1.0;
+}
+
+.tabs a.active {
+	font-weight: bold;
+	opacity: 1.0;
+}

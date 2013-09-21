@@ -5,7 +5,7 @@
         <link rel="shortcut icon" href="../favicon.ico" />
 
 		<!-- InstanceBeginEditable name="doctitle" -->
-        <title>weon.yuan | Name</title>
+        <title>weon.yuan | Meet This Person!</title>
         <!-- InstanceEndEditable -->
         
         <link rel="stylesheet" type="text/css" href="../css/master.css" media="screen">
@@ -19,14 +19,53 @@
     	</script>
         
         <!-- InstanceBeginEditable name="css/scripts" -->
-        
+		<script>
+			$(document).ready(function() {
+				$('ul.tabs').each(function(){
+				// For each set of tabs, we want to keep track of
+				// which tab is active and it's associated content
+					var $active, $content, $links = $(this).find('a');
+			
+					// If the location.hash matches one of the links, use that as the active tab.
+					// If no match is found, use the first link as the initial active tab.
+					$active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+					$active.addClass('active');
+					$content = $($active.attr('href'));
+			
+					// Hide the remaining content
+					$links.not($active).each(function () {
+						$($(this).attr('href')).hide();
+					});
+			
+					// Bind the click event handler
+					$(this).on('click', 'a', function(e){
+						// Make the old tab inactive.
+						$active.removeClass('active');
+						$content.hide();
+			
+						// Update the variables with the new link and content
+						$active = $(this);
+						$content = $($(this).attr('href'));
+			
+						// Make the tab active.
+						$active.addClass('active');
+						$content.show();
+			
+						// Prevent the anchor's default click action
+						e.preventDefault();
+					});
+				});
+			});
+		</script>
+		
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <!-- InstanceEndEditable -->
     </head>
 
     <body>
     	<div id="mainWrapper">
     	<div id="banner">
-    		<a href="index.htm"><img src="../images/invisible.png" width="260" height="80" style="border-style: none;" alt="Banner" /></a>
+    		<a href="../index.htm"><img src="../images/invisible.png" width="260" height="80" style="border-style: none;" alt="Banner" /></a>
         </div>
         
         <div id="menuBar"> 
@@ -44,17 +83,41 @@
                     <a href="../resume.htm">resume</a>
                 </li>
                 <li>
-                    <a href="../contact.php">contact me</a>
+                    <a href="../contact.htm">contact me</a>
                 </li>
             </ul>
         </div>
          
         <div id="contentWrapper">
 			<!-- InstanceBeginEditable name="main-content" -->
-            <div class="projects-showcase">
-
-                <div class="header1">Projects</div>
+            <table width="890">
+				<tr>
+					<td><div class="header1">Meet This Person!</div></td>
+					<td align="right"><img src="../projects/meetthisperson/images/logo.jpg"></td>
+				</tr>
+			</table>
+			<div class="projects-showcase">
+					<img src="../projects/meetthisperson/images/main.jpg" width="890" height="300" alt="Meet This Person!" />
             </div>
+			
+			<div id="tabs">
+				<ul class="tabs">
+					<li><a href="#tabs-1">Info</a></li>
+					<li><a href="#tabs-2">Gallery</a></li>
+					<li><a href="#tabs-3">Resources</a></li>
+				</ul>
+		
+				<div id="tabs-1">
+					<p>The Rosenlund Carriage House, currently called Greystone is situated in the center of campus between Rt. 9 and the Hudson River.  The Greystone building displays outstanding features of the Gothic Revival style. These features, combined with the historic landscape features of lawns, paths, treed areas, and drives exemplifies estate dependencies with related landscape from the mid-nineteenth century. This significant building and associated ground in this nominated district retain a high degree of integrity of style and site from the early estate.</p><br>
+					<p>A. J. Downing's <em>The Architecture of Country Houses</em> were employed at the carriage house. Downing states that the most efficient way to combine a barn and a stable/carriage house was to place the building in an area where the ground slopes to create a separate barn level at grade on one side of the building and a stable/carriage house at the higher grade on the other side of the building. The lower level was to be utilized as a root cellar and a barn for cows while the middle level or first floor was used to house horses and wagons. Hay and grain would be stored above the wagon area. Such a floor plan was designed for the early carriage house. When the Marist Brothers first occupied the site and the carriage house had wagon storage at the east end of the main floor and horse stalls at the west end; the access was through the north facade. The upper level was the hay loft and a blacksmith's shop occupied part of the cellar.</p><br>
+					<p>The aesthetic concerns expressed in Downing's book encompassed the use of construction material, decorative trims, roof styles and lines and varied floor plans. He favored stone in a dark color to achieve the stateliness required for estate buildings, yet roughly dressing the stone and laying it randomly would enhance its picturesque qualities. A. J. Downing believed the graceful lines of flared eaves echoed the gentle sloping hillsides of a riverside property and that such a treatment was appropriate for a roof's edge. Asymmetrical buildings were considered more artistic and visually striking when combined with broad window trims used to accentuate the feature and merge with other involved in the design of these estate dependencies, clear evidence of his principles and the employment of his techniques can be found at the Rosenlund carriage house.</p><br>
+					<p>Since the construction of the carriage house in 1865, there have been three remodeling's starting in 1909, then 1928, and finally 1964. Major renovations were made to Greystone in 1928 for laboratories and a library. A third story was added for more dorm space, together with windows and the tower and stairs. The wooden floors were replaced by concrete floors supported by steel beams. Brother Paul Acyndinus did the electrical wiring. Cost of the construction was $30,000. Cost of the furnishings was $10,000. The steam laundry that was installed in 1909 was transferred to Marian in 1928 as well. Throughout the years Greystone has served as a dormitory, classrooms, science labs, and a library. Since 1964, Greystone has been the President's building, where the College President's office resides along with the academic dean's office. The Marist Brothers named the building "Greystone" because of its distinctive stonewalls.</p><br>
+				</div>
+				
+				<div id="tabs-2">
+					<p>Hello World.</p>
+				</div>
+			</div>
             <!-- InstanceEndEditable -->
        </div>
        </div>
@@ -68,7 +131,7 @@
                     <a href="../projects.htm">Projects</a> |
                     <a href="../about.htm">About Me</a> |
                     <a href="../resume.htm">Resume</a> |
-                    <a href="../contact.php">Contact Me</a>
+                    <a href="../contact.htm">Contact Me</a>
                 </td>
             </tr>
             <tr>

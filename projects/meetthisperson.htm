@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html><!-- InstanceBegin template="/Templates/Projects Layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/Main Layout.dwt" codeOutsideHTMLIsLocked="false" -->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="shortcut icon" href="../favicon.ico" />
@@ -19,13 +19,93 @@
     	</script>
         
         <!-- InstanceBeginEditable name="css/scripts" -->
+		<script>
+			$(document).ready(function() {
+				$('ul.tabs').each(function(){
+				// For each set of tabs, we want to keep track of
+				// which tab is active and it's associated content
+					var $active, $content, $links = $(this).find('a');
+			
+					// If the location.hash matches one of the links, use that as the active tab.
+					// If no match is found, use the first link as the initial active tab.
+					$active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+					$active.addClass('active');
+					$content = $($active.attr('href'));
+			
+					// Hide the remaining content
+					$links.not($active).each(function () {
+						$($(this).attr('href')).hide();
+					});
+			
+					// Bind the click event handler
+					$(this).on('click', 'a', function(e){
+						// Make the old tab inactive.
+						$active.removeClass('active');
+						$content.hide();
+			
+						// Update the variables with the new link and content
+						$active = $(this);
+						$content = $($(this).attr('href'));
+			
+						// Make the tab active.
+						$active.addClass('active');
+						$content.show();
+			
+						// Prevent the anchor's default click action
+						e.preventDefault();
+					});
+				});
+			});
+		</script>
+		
+		<script type="text/javascript">
+		$(document).ready(function() {
+			hs.showCredits = false;
+			hs.expandDuration = 100;
+			hs.graphicsDir = '../images/highslide/';
+			hs.align = 'center';
+			hs.transitions = ['expand', 'crossfade'];
+			hs.outlineType = 'rounded-white';
+			hs.wrapperClassName = 'draggable-header';
+			hs.fadeInOut = true;
+			hs.dimmingOpacity = 0.75;
+			hs.dimmingDuration = 250;
+			hs.captionEval = 'this.thumb.alt';
+			
+			// Add the slideshow providing the controlbar and the thumbstrip
+			hs.addSlideshow({
+				slideshowGroup: 'group1',
+				interval: 5000,
+				repeat: false,
+				useControls: true,
+				fixedControls: false,
+				overlayOptions: {
+					opacity: .75,
+					position: 'bottom center',
+					hideOnMouseOut: true
+				}
+			});
+		});
+		</script>
+		
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		
+		<script src="../scripts/highslide-full.js"></script>
+		<link rel="stylesheet" href="../css/highslide.css" />
+        
+        <style>
+			.highslide-gallery td {
+				padding-right: 10px;
+				padding-bottom: 10px;
+			}
+		</style>
         <!-- InstanceEndEditable -->
     </head>
 
     <body>
     	<div id="mainWrapper">
     	<div id="banner">
-    		<a href="index.htm"><img src="../images/invisible.png" width="260" height="80" style="border-style: none;" alt="Banner" /></a>
+    		<a href="../index.htm"><img src="../images/invisible.png" width="260" height="80" style="border-style: none;" alt="Banner" /></a>
         </div>
         
         <div id="menuBar"> 
@@ -43,7 +123,7 @@
                     <a href="../resume.htm">resume</a>
                 </li>
                 <li>
-                    <a href="../contact.php">contact me</a>
+                    <a href="../contact.htm">contact me</a>
                 </li>
             </ul>
         </div>
@@ -56,11 +136,106 @@
 					<td align="right"><img src="meetthisperson/images/logo.jpg"></td>
 				</tr>
 			</table>
+			
 			<div class="projects-showcase">
-				<a href="../projects/website.htm">
-					<img src="../projects/meetthisperson/images/main.jpg" width="890" height="300" alt="Meet This Person!" />
-				</a>
+				<img src="../projects/meetthisperson/images/main.jpg" width="890" height="300" alt="Meet This Person!" />
             </div>
+			<div id="tabs">
+				<ul class="tabs">
+					<li><a href="#tabs-1">Info</a></li>
+					<li><a href="#tabs-2">Gallery</a></li>
+					<li><a href="#tabs-3">Resources</a></li>
+				</ul>
+		
+				<div id="tabs-1">
+					<p>
+                    	Meet This Person! is a Photoshop project where friends are introduced and described based on their known characteristics, features, and abilities.
+                    </p>
+                    <p>
+                    	Back on a boring summer day in 2011, I was browsing through my computer and an idea suddenly struck me - <em>What if I could create a feature cover for my friends?</em> The real inspiration had come from a variety of magazine I had encountered at the time, but my mind pushed me lorem ipsum
+                    </p>
+				</div>
+				
+				<div id="tabs-2">
+					<div class="highslide-gallery">
+                    	<table>
+                        	<tr>
+                            	<td>
+                                	<a class="highslide" href="meetthisperson/images/01.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/01.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/02.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/02.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/03.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/03.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/04.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/04.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/05.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/05.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+							</tr>
+                            <tr>
+                            	<td>
+                                	<a class="highslide" href="meetthisperson/images/06.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/06.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/07.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/07.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/08.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/08.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/09.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/09.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/10.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/10.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+							</tr>
+                            <tr>
+                            	<td>
+                                	<a class="highslide" href="meetthisperson/images/11.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/11.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/12.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/12.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>
+                                	<a class="highslide" href="meetthisperson/images/13.jpg" onclick="return hs.expand(this)">
+                                        <img src="meetthisperson/thumbnails/13.jpg" width="160" height="120" alt="Hello World" />
+                                    </a>
+                        		</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+							</tr>
+                        </table>
+					</div>
+				</div>
+			</div>
             <!-- InstanceEndEditable -->
        </div>
        </div>
@@ -74,7 +249,7 @@
                     <a href="../projects.htm">Projects</a> |
                     <a href="../about.htm">About Me</a> |
                     <a href="../resume.htm">Resume</a> |
-                    <a href="../contact.php">Contact Me</a>
+                    <a href="../contact.htm">Contact Me</a>
                 </td>
             </tr>
             <tr>
