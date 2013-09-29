@@ -19,7 +19,24 @@
     	</script>
         
         <!-- InstanceBeginEditable name="css/scripts" -->
+        <style>
+			.contactMe img {
+				margin-right: 10px;
+				opacity: 0.7;
+			}
+			
+			.contactMe img:hover {
+				opacity: 1.0;
+			}
+		</style>
         
+        <script>
+			$(document).ready(function() {
+				$('.contactMe td').mouseenter(function() {
+					$(this).css('opacity', '1.0');
+				});
+			});
+		</script>
         <!-- InstanceEndEditable -->
     </head>
 
@@ -54,11 +71,24 @@
             <div class="header1">Contact Me</div>
             
             <p>You can reach me by using the following:</p>
-            <div><img src="images/email.png" width="80" height="80" />Email</div>
-            <div><img src="images/google.png" width="80" height="80" />Google Plus</div>
-            <div><img src="images/linkedin.png" width="80" height="80" />LinkedIn</div>
-            <div><img src="images/github.png" width="80" height="80" />GitHub</div>
-            <div><img src="images/phone.png" width="80" height="80" />Phone Number</div>
+            <table class="contactMe">
+            	<tr>
+                	<td><a href="mailto:weon.yuan@gmail.com" target="_blank"><img src="images/email.jpg" width="65" height="65" alt="Email" /></a></td>
+                    <td><a href="mailto:weon.yuan@gmail.com" target="_blank">Email</a></td>
+                </tr>
+                <tr>
+                	<td><a href="https://plus.google.com/110111554847544482185/" target="_blank"><img src="images/googleplus.jpg" width="65" height="65" alt="Google+" /></a></td>
+                    <td><a href="https://plus.google.com/110111554847544482185/" target="_blank">Google+</a></td>
+                </tr>
+                <tr>
+                	<td><a href="http://www.linkedin.com/profile/view?id=152734224" target="_blank"><img src="images/linkedin.jpg" width="65" height="65" alt="LinkedIn" /></a></td>
+                    <td><a href="http://www.linkedin.com/profile/view?id=152734224" target="_blank">LinkedIn</a></td>
+            	</tr>
+                <tr>
+                	<td><a href="https://github.com/weonyuan" target="_blank"><img src="images/github.jpg" width="65" height="65" alt="GitHub" /></a></td>
+                    <td><a href="https://github.com/weonyuan" target="_blank">GitHub</a></td>
+                </tr>
+            </table>
             <!-- InstanceEndEditable -->
        </div>
        </div>
