@@ -1,103 +1,109 @@
+"use client";
+import { motion } from "framer-motion";
+import { SITE, PROJECTS } from "@/data/site";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, ExternalLink, FileText, Mail, MapPin, Phone, Sparkles } from "lucide-react";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+const fadeIn = { initial: { opacity: 0, y: 8 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-50px" }, transition: { duration: 0.5 } };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+export default function HomePage() {
+  return (
+    <div>
+      {/* Hero */}
+      <section id="top" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-8 md:grid-cols-3">
+          <motion.div {...fadeIn} className="order-2 md:order-1 md:col-span-2">
+            <div className="inline-flex items-center gap-2 rounded-full border bg-muted px-3 py-1 text-xs text-muted-foreground">
+              <span className="inline-flex h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+              Available for opportunities
+            </div>
+            <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">{SITE.name}</h1>
+            <p className="mt-3 text-lg text-muted-foreground">{SITE.role}</p>
+            <p className="mt-4 max-w-2xl text-base text-muted-foreground">{SITE.description}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              {SITE.social.map((s) => (
+                <Button key={s.label} asChild variant="outline" size="sm" className="rounded-full">
+                  <a href={s.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    <span>{s.label}</span>
+                  </a>
+                </Button>
+              ))}
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-1"><MapPin className="h-4 w-4" /> {SITE.location}</span>
+              <a href={`mailto:${SITE.email}`} className="inline-flex items-center gap-1 hover:underline"><Mail className="h-4 w-4" /> {SITE.email}</a>
+              <a href={`tel:${SITE.phone}`} className="inline-flex items-center gap-1 hover:underline"><Phone className="h-4 w-4" /> {SITE.phone}</a>
+            </div>
+            <div className="mt-6 flex gap-3">
+              <Button asChild size="lg" className="rounded-2xl"><a href={`mailto:${SITE.email}`}><Mail className="mr-2 h-5 w-5" /> Email me</a></Button>
+              <Button asChild variant="outline" size="lg" className="rounded-2xl"><a href={SITE.resumeUrl} target="_blank" rel="noreferrer"><FileText className="mr-2 h-5 w-5" /> View resume</a></Button>
+            </div>
+          </motion.div>
+          <motion.div {...fadeIn} transition={{ duration: 0.6, delay: 0.1 }} className="order-1 md:order-2">
+            <div className="aspect-square w-full rounded-2xl bg-muted/40" aria-label="Profile visual placeholder">
+              <Image
+                src="/og.jpg"
+                alt="Weon Yuan"
+                width={800}
+                height={800}
+                className="h-full w-full rounded-2xl object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-semibold sm:text-3xl">Projects</h2>
+            <p className="mt-1 text-sm text-muted-foreground">High-impact work that goes beyond a resume.</p>
+          </div>
+          <Button asChild variant="ghost"><a href="/projects" className="inline-flex items-center">See all <ArrowRight className="ml-2 h-4 w-4" /></a></Button>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {PROJECTS.map((p) => (
+            <a
+              key={p.title}
+              href={p.links && p.links[0]?.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group block h-full"
+            >
+                          <div className="h-full overflow-hidden rounded-2xl border p-5 transition duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:border-primary hover:bg-muted/30">
+                <div className="mb-2 flex flex-wrap gap-1">
+                  {p.tags.slice(0, 2).map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full bg-muted px-2 py-0.5 text-[10px]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <h3 className="text-lg font-semibold group-hover:underline">
+                  {p.title}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">{p.summary}</p>
+                <div className="mt-3 flex flex-wrap gap-1">
+                  {p.tags.slice(2).map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border px-2 py-0.5 text-[10px]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
