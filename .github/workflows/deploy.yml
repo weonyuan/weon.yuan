@@ -22,8 +22,8 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
+      # build (prebuild hook will generate sitemap/robots)
       - run: npm run build
-      - run: npm run export
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
