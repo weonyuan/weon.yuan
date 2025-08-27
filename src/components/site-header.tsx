@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { NAV, SITE } from "@/data/site";
 import { Button } from "@/components/ui/button";
-import { FileText, Moon, Sun, Sparkles } from "lucide-react";
+import { FileText, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 

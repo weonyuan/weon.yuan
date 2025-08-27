@@ -1,25 +1,80 @@
+"use client";
+
+import { useState } from "react";
+
+type ContactFormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
 export default function ContactPage() {
-  const { SITE } = require("@/data/site");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // Convert FormData to a typed object
+    const data = Object.fromEntries(formData.entries()) as Record<string, FormDataEntryValue>;
+    const payload: ContactFormData = {
+      name: String(data.name ?? ""),
+      email: String(data.email ?? ""),
+      message: String(data.message ?? ""),
+    };
+
+    try {
+      // Replace this with your own endpoint/integration
+      // await fetch("/api/contact", { method: "POST", body: JSON.stringify(payload) });
+      console.log("Contact payload", payload);
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
-    <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-semibold">Contact</h1>
-      <p className="mt-2 text-sm text-muted-foreground">I love shipping delightful, accessible web experiences. Whether you need a polished product or a rapid prototype, I can help.</p>
-      <div className="mt-6">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const data = new FormData(e.currentTarget as HTMLFormElement);
-            const params = new URLSearchParams(data as any).toString();
-            window.open(`mailto:${SITE.email}?subject=Hello%20from%20your%20website&body=${encodeURIComponent(decodeURIComponent(params))}`);
-          }}
-          className="space-y-3"
+    <section className="mx-auto max-w-xl p-6">
+      <h1 className="text-2xl font-semibold">Contact</h1>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Drop me a note—I will get back to you soon.
+      </p>
+
+      <form onSubmit={onSubmit} className="mt-6 space-y-4">
+        <div>
+          <label className="block text-sm font-medium">Name</label>
+          <input name="name" required className="mt-1 w-full rounded-md border bg-background p-2" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Email</label>
+          <input type="email" name="email" required className="mt-1 w-full rounded-md border bg-background p-2" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Message</label>
+          <textarea name="message" required rows={5} className="mt-1 w-full rounded-md border bg-background p-2" />
+        </div>
+
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="rounded-md bg-primary px-4 py-2 text-primary-foreground disabled:opacity-50"
         >
-          <input name="name" placeholder="Your name" required className="w-full rounded-xl border bg-background px-3 py-2 text-sm outline-none ring-primary/30 focus:ring" />
-          <input name="contact" placeholder="Email or phone" className="w-full rounded-xl border bg-background px-3 py-2 text-sm outline-none ring-primary/30 focus:ring" />
-          <textarea name="message" placeholder="Message" rows={6} required className="w-full rounded-xl border bg-background px-3 py-2 text-sm outline-none ring-primary/30 focus:ring" />
-          <button type="submit" className="w-full rounded-2xl border px-4 py-2 text-sm">Send via email</button>
-        </form>
-      </div>
+          {status === "sending" ? "Sending..." : "Send"}
+        </button>
+
+        {status === "sent" && (
+          <p className="text-sm text-green-600">Message sent! 🎉</p>
+        )}
+        {status === "error" && (
+          <p className="text-sm text-red-600">Something went wrong. Try again?</p>
+        )}
+      </form>
     </section>
   );
 }

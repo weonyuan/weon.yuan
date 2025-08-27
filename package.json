@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "export": "next export",
+    "preexport": "node scripts/generate-sitemap.mjs",
     "start": "next start",
     "lint": "next lint"
   },

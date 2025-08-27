@@ -203,7 +203,7 @@ export default function BackgroundFlock({
       return autoLeader(t);
     }
 
-    function steerBoids(leader: { x: number; y: number }, warmup: number) {
+    function steerBoids(leader: { x: number; y: number }) {
       const boids = boidsRef.current;
 
       // Precompute leader direction for slot positions
@@ -382,7 +382,7 @@ export default function BackgroundFlock({
 
       const leader = currentLeader(frameRef.current);
 
-      if (!reduce) steerBoids(leader, clamp01(frameRef.current / warmupFrames));
+      if (!reduce) steerBoids(leader);
 
       // Integrate & bounce
       const margin = 8;

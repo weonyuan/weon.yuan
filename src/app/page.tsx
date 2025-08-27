@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { SITE, PROJECTS } from "@/data/site";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ExternalLink, FileText, Mail, MapPin, Phone, Sparkles } from "lucide-react";
+import { ArrowRight, ExternalLink, FileText, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 
 const fadeIn = { initial: { opacity: 0, y: 8 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-50px" }, transition: { duration: 0.5 } };
